@@ -1,17 +1,25 @@
-import { Children, createContext ,useReducer } from 'react'
+import { createContext,useReducer } from "react";
 
-export const AuthContext = createContext()
+export const AuthContext=createContext()
 
 export const authReducer=(state,action)=>{
-    
-}
-export const AuthContextProvider=({children})=>{
+    switch(action.type){
 
-    const [state,dispatch] = useReducer(authReducer,{
+        case 'LOGIN':
+            return {...state , user:action.payload}
+
+        default:
+            return state
+    }
+}
+
+export const AuthContextProvider = ({children})=>{
+    const [state,dispatch]=useReducer(authReducer,{
         user:null
     })
+    console.log('AuthContext state :', state)
 
-    return(
+    return (
         <AuthContext.Provider value={{...state,dispatch}} >
             {children}
         </AuthContext.Provider>
