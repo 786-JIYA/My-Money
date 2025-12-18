@@ -21,10 +21,10 @@ function NavBar() {
             )}
 
             <li>
-              {!user && (
+              {user && (
               <>
-              <li>Hello ,{user.displayName}</li>
               <li>
+              <li>Hello ,{user.displayName}</li>
               <button className='btn' onClick={logout} >Logout</button>
               </li>
               </>
