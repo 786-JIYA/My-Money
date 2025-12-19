@@ -4,9 +4,14 @@ import Home from './pages/home/Home.js'
 import Login from './pages/login/Login.js'
 import Signup from './pages/signup/Signup.js'
 import NavBar from './components/NavBar.js';
+import { useAuthContext } from './hooks/useAuthContext.js';
 function App() {
+
+  const{authIsReady}=useAuthContext()
+
   return (
     <div className="App">
+      {authIsReady && (
       <BrowserRouter>
       <NavBar/>
       <Routes>
@@ -16,7 +21,7 @@ function App() {
         
       </Routes>
       </BrowserRouter>
-
+      )}
     </div>
   );
 }
